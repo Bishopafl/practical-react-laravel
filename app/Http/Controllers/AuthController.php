@@ -23,7 +23,7 @@ class AuthController extends Controller
         return response($user, Response::HTTP_CREATED);
     }
 
-    public function login (Request $request)
+    public function login(Request $request)
     {
         if (!Auth::attempt($request->only('email', 'password'))) {
             return \response([
@@ -41,5 +41,10 @@ class AuthController extends Controller
         return \response([
             'jwt' => $token
         ]);
+    }
+
+    public function user(Request $request)
+    {
+        return $request->user();
     }
 }
