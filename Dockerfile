@@ -13,10 +13,9 @@ WORKDIR /app
 # Copy the application code into the container
 COPY . .
 
-# Ensure the storage and bootstrap/cache directories exist and set the proper permissions
-RUN mkdir -p /app/storage /app/bootstrap/cache && \
-    chmod -R 775 /app/storage /app/bootstrap/cache && \
-    chown -R www-data:www-data /app/storage /app/bootstrap/cache
+# Ensure the /app directory and relevant subdirectories have the correct permissions
+RUN chmod -R 775 /app && \
+    chown -R www-data:www-data /app
 
 # Install PHP dependencies
 RUN composer install
