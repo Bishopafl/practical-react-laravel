@@ -7,8 +7,7 @@ services:
       ports:
         - 8000:8000
       volumes:
-        - .:/app
-        # - .:/var/www/html:cached
+        - .:/var/www/html
       depends_on:
         - db
       user: "www-data"
